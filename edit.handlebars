@@ -1,0 +1,32 @@
+<h1>Edit Row {{routine.id}}</h1>
+
+<form action="/safe-update">
+    <fieldset>
+        <legend>Update workout information:</legend>
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="{{routine.name}}">
+        </p>
+        <p>
+            <label for="reps">Reps:</label>
+            <input type="text" name="reps" id="reps" value="{{routine.reps}}">
+        </p>
+        <p>
+            <label for="weight">Weight:</label>
+            <input type="text" name="weight" id="weight" value="{{routine.weight}}">
+        </p>
+        <p>
+            <label for="date">Date:</label>
+            <input type="text" name="date" id="date" value="{{routine.date}}">
+        </p>
+        <p>
+            <label for="lbs">In lbs?</label>
+            {{#if routine.lbs}}
+            <input type="checkbox" name="lbs" id="lbs" checked>
+            {{else}}
+            <input type="checkbox" name="lbs" id="lbs">
+            {{/if}}
+        </p>
+        <input type="submit" value="Edit">
+    </fieldset>
+</form>
