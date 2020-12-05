@@ -7,7 +7,7 @@ insertion.addEventListener('submit',function(event){
     let data = "name="+insertion.elements.name.value+ "&reps="+insertion.elements.reps.value+"&weight="+insertion.elements.weight.value+"&date="+insertion.elements.weight.value+"&lbs="+insertion.elements.lbs.value;
     
     req.open("GET", "/insert?" + data, true);
-    req.setRequestHEader('Content-Type', 'application/x-www-form-urlencoded');
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     req.addEventListener('load', function(){
         if(req.status >= 200 && req.status < 400){
@@ -29,6 +29,9 @@ insertion.addEventListener('submit',function(event){
             deletion.setAttribute('type', 'button');
             deletion.setAttribute('value', 'Delete');
             deletion.setAttribute('onClick', 'deleteRow(' + id + ')');
+            options.appendChild(deletion);
+            options.appendChild(editor);
+            new_row.appendChild(options);
         } else {
             console.log("There was an error, idiot.");
         } 
@@ -37,15 +40,9 @@ insertion.addEventListener('submit',function(event){
 });
 
 function deleteRow(id) {
-    let table = document.getElementById('content');
-    let count = table.rows.length;
-
-    for (let i = 1; i < count; i++){
-        let cur = table.rows[i]
-        if (cur.id == id) {
-            table.deleteRow(i);
-        }
-    }
+    let match = id.toString();
+    let to_delete = document.getElementById(match);
+    to_delete.parentNode.removeChild(to_delete);
 
     let req = new XMLHttpRequest();
 

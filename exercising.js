@@ -140,12 +140,21 @@ app.get('/safe-update',function(req,res,next){
 });
 
 app.get('/delete',function(req,res,next){
+    var context = {};
     pool.query("DELETE FROM workouts WHERE id = ?", 
     [req.query.id], function(err, result){
       if(err){
         next(err);
         return;
       }
+    });
+    pool.query('SELECT * FROM workouts', function(err,rows,fields){
+      if(err){
+          next(err);
+          return;
+      }
+      context.routine = JSON.stringify(rows);
+      res.render('home', context);
     });
 });
   
