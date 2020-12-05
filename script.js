@@ -1,7 +1,7 @@
 let insertion = document.getElementById('insert');
 
-insertion.getElementById('add').addEventListener('click',function(event){
-    e.preventDefault();
+insertion.addEventListener('submit',function(event){
+    event.preventDefault();
     
     let req = new XMLHttpRequest();
     let data = "name="+insertion.elements.name.value+ "&reps="+insertion.elements.reps.value+"&weight="+insertion.elements.weight.value+"&date="+insertion.elements.weight.value+"&lbs="+insertion.elements.lbs.value;
@@ -38,7 +38,7 @@ insertion.getElementById('add').addEventListener('click',function(event){
 
 function deleteRow(id) {
     let table = document.getElementById('content');
-    let count = tables.rows.length;
+    let count = table.rows.length;
 
     for (let i = 1; i < count; i++){
         let cur = table.rows[i]

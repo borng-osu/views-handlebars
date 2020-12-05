@@ -90,7 +90,7 @@ app.get('/edit',function(req,res,next){
             'date':rows[0].date,
             'lbs':rows[0].lbs
         });
-        context.routine = sqlInfo;
+        context.routine = sqlInfo[0];
         res.render('edit', context);
     });
 });
